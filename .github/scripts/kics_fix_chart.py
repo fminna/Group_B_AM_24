@@ -422,6 +422,7 @@ class LookupClass:
         "c589f42c-7924-4871-aee2-1cede9bc7cbc": "check_54",
         "85ab1c5b-014e-4352-b5f8-d7dea3bb4fd3": "",
         "a6f34658-fdfb-4154-9536-56d516f65828": "check_15",
+        "0401f71b-9c1e-4821-ab15-a955caa621be": "" # check_69 --- change network policy
     }
 
     @classmethod

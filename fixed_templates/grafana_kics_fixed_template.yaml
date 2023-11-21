@@ -293,15 +293,6 @@ spec:
       - name: storage
         emptyDir: {}
 ---
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: grafana-network-policy
-  namespace: grafana
-spec:
-  podSelector: []
-  policyTypes: []
----
 apiVersion: v1
 kind: ServiceAccount
 metadata:

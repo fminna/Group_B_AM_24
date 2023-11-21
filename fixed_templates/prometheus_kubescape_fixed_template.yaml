@@ -679,8 +679,23 @@ metadata:
   name: prometheus-net-policy
   namespace: prometheus
 spec:
-  podSelector: {}
-  policyTypes: []
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-node-exporter
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.0.1.0/24
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.1.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -910,8 +925,23 @@ metadata:
   name: prometheus-net-policy
   namespace: prometheus
 spec:
-  podSelector: {}
-  policyTypes: []
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-pushgateway
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 10.0.1.0/24
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 10.0.1.0/24
+    ports:
+    - protocol: TCP
+      port: 5978
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1291,19 +1321,3 @@ spec:
       resources:
         requests:
           storage: 2Gi
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: test-network-policy
-spec:
-  podSelector: {}
-  policyTypes: []
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: test-network-policy
-spec:
-  podSelector: {}
-  policyTypes: []

@@ -1,4 +1,4 @@
-# Group B - Trento Experiments
+# Group B - Amsterdam Experiments
 
 This repository contains the Helm Charts and GitHub Actions that Group B will analyze.
 
